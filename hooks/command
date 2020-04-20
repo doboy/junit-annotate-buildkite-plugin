@@ -3,9 +3,9 @@
 set -euo pipefail
 
 PLUGIN_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)/.."
-MAX_SIZE=1024 # in KB
+MAX_SIZE=${BUILDKITE_PLUGIN_JUNIT_ANNOTATE_MAX_SIZE:-1024} # Size in KB
 
-echo "--- :junit: Download the junits"
+echo "--- :junit: Download the junits ${MAX_SIZE}"
 
 artifacts_dir="$(pwd)/$(mktemp -d "junit-annotate-plugin-artifacts-tmp.XXXXXXXXXX")"
 annotation_dir="$(pwd)/$(mktemp -d "junit-annotate-plugin-annotation-tmp.XXXXXXXXXX")"
